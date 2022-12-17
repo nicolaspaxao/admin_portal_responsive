@@ -1,4 +1,4 @@
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:management_dashboard/utils/constants.dart';
 
@@ -16,7 +16,6 @@ class OverviewTopCard extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(width: 1, color: borderCardsColor),
@@ -25,23 +24,34 @@ class OverviewTopCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 19,
-                color: secondaryTextColor,
-                fontWeight: FontWeight.bold,
+            Expanded(
+              child: Center(
+                child: AutoSizeText(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 19,
+                    color: secondaryTextColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  minFontSize: 8,
+                  maxLines: 1,
+                ),
               ),
             ),
-            const SizedBox(height: 12),
-            Text(
-              subtitle,
-              style: const TextStyle(
-                fontSize: 40,
-                color: primaryTextColor,
-                fontWeight: FontWeight.bold,
+            Expanded(
+              child: Center(
+                child: AutoSizeText(
+                  subtitle,
+                  style: const TextStyle(
+                    fontSize: 40,
+                    color: primaryTextColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  minFontSize: 20,
+                  maxLines: 1,
+                ),
               ),
-            )
+            ),
           ],
         ),
       ),

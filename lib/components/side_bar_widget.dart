@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../utils/constants.dart';
+import '../utils/responsive.dart';
+import 'header_dashboard.dart';
 
 class SideBarWidget extends StatelessWidget {
   const SideBarWidget({
@@ -13,6 +15,15 @@ class SideBarWidget extends StatelessWidget {
     return ListView(
       children: [
         const HeaderSideBar(),
+        if (ResponsiveWidget.isMobile(context)) ...[
+          const Padding(
+            padding: EdgeInsets.only(left: 32),
+            child: ActionHeader(),
+          ),
+          Divider(
+            color: hoverColor.withOpacity(0.1),
+          ),
+        ],
         SideBarTile(
           icon: 'assets/icons/overview.svg',
           title: 'Overview',

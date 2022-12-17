@@ -11,38 +11,40 @@ class SectionLeftItens extends StatelessWidget {
   final String title;
   final String subTitle;
 
+  
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Container(
+    return Container(
       width: double.infinity,
-      decoration: const BoxDecoration(
-          border:
-              Border(bottom: BorderSide(color: borderCardsColor, width: 1))),
+      decoration: BoxDecoration(
+          border: Border.all(width: 0.25, color: borderCardsColor)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 16,
-              color: secondaryTextColor,
-              fontWeight: FontWeight.bold,
+          Expanded(
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 16,
+                color: secondaryTextColor,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
-          const SizedBox(height: 6),
-          Text(
-            subTitle,
-            style: const TextStyle(
-              fontSize: 24,
-              color: primaryTextColor,
-              fontWeight: FontWeight.bold,
+          Expanded(
+            child: Text(
+              subTitle,
+              style: const TextStyle(
+                fontSize: 24,
+                color: primaryTextColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           )
         ],
       ),
-    ));
+    );
   }
 }

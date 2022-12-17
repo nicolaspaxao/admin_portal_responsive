@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
+import 'package:management_dashboard/utils/responsive.dart';
 
 import '../utils/constants.dart';
 
@@ -11,26 +12,50 @@ class SubtitleInformationsChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: const [
-        Text(
-          'as of 25 May 2019, 09:41 PM',
-          style: TextStyle(
-            fontSize: 12,
-            color: secondaryTextColor,
-            fontWeight: FontWeight.w400,
-          ),
+    final width = MediaQuery.of(context).size.width;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            const Expanded(
+              child: Text(
+                'as of 25 May 2019, 09:41 PM',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: secondaryTextColor,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            if (width > 490) ...[
+              const TopicInfo(
+                info: 'Today',
+                color: mainBlueColor,
+              ),
+              const SizedBox(width: 32),
+              const TopicInfo(
+                info: 'Yesterday',
+                color: secondaryTextColor,
+              ),
+            ]
+          ],
         ),
-        Spacer(),
-        TopicInfo(
-          info: 'Today',
-          color: mainBlueColor,
-        ),
-        SizedBox(width: 32),
-        TopicInfo(
-          info: 'Yesterday',
-          color: secondaryTextColor,
-        ),
+        if (width < 490) ...[
+          Wrap(
+            children: const [
+              TopicInfo(
+                info: 'Today',
+                color: mainBlueColor,
+              ),
+              SizedBox(width: 32),
+              TopicInfo(
+                info: 'Yesterday',
+                color: secondaryTextColor,
+              ),
+            ],
+          )
+        ]
       ],
     );
   }
